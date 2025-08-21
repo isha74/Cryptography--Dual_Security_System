@@ -28,3 +28,17 @@
    Python packages ka fast install format (wheel format .whl).
    Ye setuptools ke sath kaam karta hai taaki package ko zip format me banaya aur install kiya ja sake bina source code compile kiye.
 
+9. RSA Key Generation → Made keymanager.py which generates a private.pem and public.pem key pair (RSA 2048).
+
+10. Encryption Setup →
+Created encryption.py that uses AES (random key) to encrypt a file.
+AES key is then encrypted with RSA public key for security.
+
+11. Decryption Setup → Created decryption.py that reads the RSA private key, decrypts the AES key, and then decrypts the file content.
+
+12. Encrypted file saved as .enc.
+    Decrypted file saved as .dec
+
+13. Execution Flow →  Run keymanager.py → generate keys.
+                      Run encryption.py <file> → encrypt file.
+                      Run decryption.py <file>.enc → decrypt file back to original.
