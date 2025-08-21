@@ -41,6 +41,7 @@ Implements a **two-tier security system** combining **symmetric** and **asymmetr
 
 ## How to run the project:
    ```bash
-   python src/main.py
-
+   python src/key_manager.py
+   python src/encryption.py
+   python src/decryption.py
 
