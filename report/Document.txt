@@ -28,3 +28,48 @@
    Python packages ka fast install format (wheel format .whl).
    Ye setuptools ke sath kaam karta hai taaki package ko zip format me banaya aur install kiya ja sake bina source code compile kiye.
 
+9. RSA Key Generation → Made keymanager.py which generates a private.pem and public.pem key pair (RSA 2048).
+
+10. Encryption Setup →
+Created encryption.py that uses AES (random key) to encrypt a file.
+AES key is then encrypted with RSA public key for security.
+
+11. Decryption Setup → Created decryption.py that reads the RSA private key, decrypts the AES key, and then decrypts the file content.
+
+12. Encrypted file saved as .enc.
+    Decrypted file saved as .dec
+
+13. Execution Flow →  Run keymanager.py → generate keys.
+                      Run encryption.py <file> → encrypt file.
+                      Run decryption.py <file>.enc → decrypt file back to original.
+
+14. Flask Web App
+    `src/web_app.py` provides a Flask-based UI 
+    with Login, Signup, and Dashboard pages.
+
+15. Templates & Static
+    HTML templates live in `src/templates/` (base, index, login, signup, dashboard). 
+    CSS/JS/images are in `src/static/`.
+
+16. File Upload Handling
+    Uploaded files are saved in `uploads/` and then processed. 
+    After encrypt/decrypt, a download link is returned.
+
+17. Excel-based Users Store
+    Database is now stored in `instance/user_data.xlsx`. 
+    On signup, a new row is appended with `id, username, email, password_hash, created_at, is_active`.
+
+18. Login Validation
+    Login reads the user from Excel and verifies the password hash. 
+    Flask-Login manages the user session.
+
+19. Keys & Output
+    RSA keys are stored under `src/keys/`. 
+    Encrypted/decrypted files are generated under `src/output/` or `uploads/`.
+
+20. Instance Folder
+    The `instance/` folder holds `user_data.xlsx` and other runtime data meant to be writable.
+
+21. Security Notes
+    Passwords are stored as secure hashes (not stored in plain text). 
+    Keep `src/keys/` private to protect cryptographic keys.
