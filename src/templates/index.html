@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title %}Home · Medical Data Security{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Medical-Grade Security</span>
+    </div>
+    <h1>SecuraMed</h1>
+    <p>Advanced hybrid RSA + AES encryption designed specifically for healthcare. Secure DICOM files, patient records, and medical documents with military-grade protection.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ url_for('signup') }}">
+        <i class="fa-solid fa-rocket"></i>
+        Get Started Free
+      </a>
+      <a class="btn secondary" href="{{ url_for('login') }}">
+        <i class="fa-solid fa-sign-in-alt"></i>
+        Sign In
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">256-bit</span>
+        <span class="stat-label">AES Encryption</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">2048-bit</span>
+        <span class="stat-label">RSA Security</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">HIPAA</span>
+        <span class="stat-label">Compliant</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="signin-bot-container">
+      <img src="{{ url_for('static', filename='Bot_withoutbg.gif') }}" alt="Security Bot" class="signin-bot" />
+    </div>
+    <div class="security-animation">
+      <div class="encryption-flow">
+        <div class="flow-step">
+          <i class="fa-solid fa-file-medical"></i>
+          <span>Medical Data</span>
+        </div>
+        <div class="flow-arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="flow-step">
+          <i class="fa-solid fa-lock"></i>
+          <span>AES-256</span>
+        </div>
+        <div class="flow-arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="flow-step">
+          <i class="fa-solid fa-key"></i>
+          <span>RSA Protected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="about">
+  <div class="features-header">
+    <h2>Why Choose Our Medical Security Platform?</h2>
+    <p>Built specifically for healthcare professionals and medical institutions</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="fa-solid fa-shield-virus"></i>
+      </div>
+      <h3>Dual-Layer Security</h3>
+      <p>Combines the speed of AES-256 with the strength of RSA-2048 for military-grade protection of sensitive medical data.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="fa-solid fa-x-ray"></i>
+      </div>
+      <h3>DICOM-Ready</h3>
+      <p>Seamlessly handles medical imaging data, DICOM files, and complex binary formats used in radiology and diagnostics.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="fa-solid fa-user-md"></i>
+      </div>
+      <h3>Healthcare Focused</h3>
+      <p>Designed with medical workflows in mind. Simple, intuitive interface that healthcare professionals can trust.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="fa-solid fa-clock"></i>
+      </div>
+      <h3>Lightning Fast</h3>
+      <p>Optimized encryption algorithms ensure your medical data is protected without slowing down critical workflows.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="fa-solid fa-certificate"></i>
+      </div>
+      <h3>HIPAA Compliant</h3>
+      <p>Built to meet healthcare compliance standards, ensuring your patient data protection meets regulatory requirements.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+      </div>
+      <h3>Easy Integration</h3>
+      <p>Simple API and web interface make it easy to integrate into existing medical systems and workflows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to Secure Your Medical Data?</h2>
+    <p>Join healthcare professionals who trust our platform to protect their most sensitive information.</p>
+    <div class="cta-actions">
+      <a class="btn primary large" href="{{ url_for('signup') }}">
+        <i class="fa-solid fa-user-plus"></i>
+        Create Free Account
+      </a>
+      <a class="btn secondary large" href="{{ url_for('login') }}">
+        <i class="fa-solid fa-sign-in-alt"></i>
+        Sign In
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+

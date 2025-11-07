@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard · Dual Security System{% endblock %}
+{% block content %}
+<section class="dashboard">
+  <div class="card">
+    <h2>Encrypt a file</h2>
+    <form id="encrypt-form">
+      <input type="file" name="file" accept="*/*" required />
+      <button class="btn primary" type="submit">Encrypt</button>
+    </form>
+    <div id="encrypt-result" class="result"></div>
+  </div>
+
+  <div class="card">
+    <h2>Decrypt a file</h2>
+    <form id="decrypt-form">
+      <input type="file" name="file" accept="*/*" required />
+      <button class="btn primary" type="submit">Decrypt</button>
+    </form>
+    <div id="decrypt-result" class="result"></div>
+  </div>
+
+  <div class="card">
+    <h2>Keys</h2>
+    <a class="btn" href="{{ url_for('generate_keys') }}">Generate RSA Keys</a>
+  </div>
+
+  <div class="card">
+    <h2>Recent activity</h2>
+    {% if operations %}
+      <ul class="timeline">
+        {% for op in operations %}
+          <li>
+            <strong>{{ op.operation_type|capitalize }}</strong> — {{ op.filename }}
+            <span class="badge {{ op.status }}">{{ op.status }}</span>
+            <span class="muted">{{ op.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">No recent operations yet.</p>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  const postFile = async (url, form) => {
+    const formData = new FormData(form);
+    const res = await fetch(url, { method: 'POST', body: formData });
+    return res.json();
+  };
+
+  document.getElementById('encrypt-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const out = document.getElementById('encrypt-result');
+    out.textContent = 'Encrypting...';
+    try {
+      const data = await postFile('{{ url_for('encrypt_file_web') }}', e.target);
+      if (data.download_url) {
+        out.innerHTML = `<a class="btn primary" href="${data.download_url}">Download encrypted file</a>`;
+      } else {
+        out.textContent = data.message || data.error;
+      }
+    } catch (err) {
+      out.textContent = 'Error encrypting file';
+    }
+  });
+
+  document.getElementById('decrypt-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const out = document.getElementById('decrypt-result');
+    out.innerHTML = 'Decrypting...';
+    try {
+      const data = await postFile('{{ url_for('decrypt_file_web') }}', e.target);
+      if (data.download_url) {
+        out.innerHTML = `<a class="btn primary" href="${data.download_url}">Download decrypted file</a>`;
+      } else {
+        out.textContent = data.message || data.error;
+      }
+    } catch (err) {
+      out.textContent = 'Error decrypting file';
+    }
+  });
+</script>
+{% endblock %}
+
+
+
