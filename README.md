@@ -32,8 +32,9 @@ Implements a **two-tier security system** combining **symmetric** and **asymmetr
 
 2. **Set up a virtual environment (optional but recommended):**
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # For Windows: venv\Scripts\activate
+   python -m venv .venv
+   source venv/bin/activate
+   # For Windows: .venv\Scripts\activate
 
 3. **Install requirements:**
     ```bash
@@ -41,7 +42,8 @@ Implements a **two-tier security system** combining **symmetric** and **asymmetr
    python -m pip install --upgrade pip
 
 ## How to run the project:
+
    ```bash
    python src\web_app.py
-
+   python src\database.py  # For downloading database 
 
