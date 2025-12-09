@@ -1,19 +1,20 @@
-# Cryptography–Dual-Security
-_A Python-based dual-layer encryption and security framework._
+# Secura-Med : Dual Encryption Based Framework for Medical Images.
+_A Python-Based System for Protecting Sensitive Healthcare Data._
 
 ---
 
-## 📖 About
-Implements a **two-tier security system** combining **symmetric** and **asymmetric encryption** for enhanced data protection.
+## 📖 Overview
+Secura-Med is a dual-layer encryption framework designed to secure medical images (CT, MRI, X-ray, etc.) during storage and transmission.
+The system combines AES (symmetric encryption) for fast image encryption and RSA (asymmetric encryption) for secure key protection.
 
 ---
 
 ## ✨ Features
-- Secure data encryption and decryption  
-- Dual-layer security using **AES** (symmetric) and **RSA** (asymmetric)  
+- Dual-Layer Security using AES + RSA
+- Secure Key Generation, Encryption & Decryption
+- Support for Medical DICOM Images (.dcm)
 - User authentication & key management  
-- Easy to extend for more cryptographic methods  
-
+- Easy to extend for more cryptographic methods
 ---
 
 ## 📋 Prerequisites
@@ -43,7 +44,12 @@ Implements a **two-tier security system** combining **symmetric** and **asymmetr
 
 ## How to run the project:
 
+**Start the Web Application**
    ```bash
    python src\web_app.py
-   python src\database.py  # For downloading database 
+```
+
+**Initialize / Download the Database**
+   ```bash
+   python src\database.py 
 
